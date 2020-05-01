@@ -2,13 +2,16 @@ import React from 'react'
 import {Card, Icon, Image} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
+const IMAGE_POSTER_PREFIX = 'https://image.tmdb.org/t/p/w440_and_h660_face/'
+const IMAGE_POSTER_DEFAULT = 'https://react.semantic-ui.com/images/wireframe/white-image.png'
+
 export const FilmCard = ({film}) => {
     return (
         <Link to={`/film/${film.id}`} className="ui card">
             {film.poster_path
-                ? <Image src={`https://image.tmdb.org/t/p/w440_and_h660_face/${film.poster_path}`} wrapped
+                ? <Image src={IMAGE_POSTER_PREFIX + film.poster_path} wrapped
                          ui={false}/>
-                : <Image src='https://react.semantic-ui.com/images/wireframe/white-image.png' wrapped size='medium'
+                : <Image src={IMAGE_POSTER_DEFAULT} wrapped size='medium'
                          ui={false}/>
 
             }

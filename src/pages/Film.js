@@ -4,12 +4,6 @@ import {Container, Grid, Header, Icon, Image, List} from 'semantic-ui-react'
 
 export const Film = ({match}) => {
 
-    const background = {
-        // backgroundImage: 'linear-gradient(to right top, #4c6c9d, #0092b7, #00b4b3, #71d199, #d1e483)',
-        // color: '#fff',
-        // padding: '4em 0'
-    }
-
     const {loading, film, getFilm} = useContext(MovieContext)
 
     const urlName = match.params.name
@@ -30,7 +24,7 @@ export const Film = ({match}) => {
     } = film
 
     return (
-        <Container fluid style={background}>
+        <Container fluid>
             <Container>
                 <Grid>
                     <Grid.Column width={5}>

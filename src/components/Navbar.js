@@ -9,7 +9,7 @@ export const Navbar = () => {
     const isHomePage = location.pathname === '/'
     return (
         <nav className="">
-            <Menu size='huge'>
+            <Menu size='huge' inverted>
                 <Menu.Item><Icon name='tv'/> Movies</Menu.Item>
                 { isHomePage
                     ? (

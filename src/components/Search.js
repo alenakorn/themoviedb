@@ -11,12 +11,11 @@ export const SearchWrap = () => {
     return (
         <>
             <Input
-                className='icon'
+                className='icon dark'
                 icon='search'
-                placeholder='Search...'
+                placeholder='Поиск...'
                 onChange={event => onChange(event.target.value)}
             />
-
         </>
     )
 

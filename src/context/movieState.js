@@ -4,7 +4,7 @@ import axios from 'axios'
 import {MovieContext} from './movieContext'
 import {movieReducer} from './movieReducer'
 
-import {GET_FILM, SEARCH_FILMS, SET_LOADING} from './type'
+import {DEFAULT_STATE, GET_FILM, SEARCH_FILMS, SET_LOADING} from './type'
 
 const API_KEY = '8f377e1df6c2f4fce7385a40245c1557'
 const LANGUAGE = 'ru-RU'
@@ -17,6 +17,7 @@ export const MovieState = ({children}) => {
     const initialState = {
         films: [],
         film: {},
+        search: '',
         loading: false,
     }
 
@@ -24,7 +25,17 @@ export const MovieState = ({children}) => {
 
     const setLoading = () => dispatch({type: SET_LOADING})
 
+    const defaultState = () => {
+        dispatch({
+            type: DEFAULT_STATE,
+        })
+    }
+
     const searchRequest = async value => {
+        if (!value) {
+            defaultState()
+            return
+        }
         setLoading()
 
         const response = await axios.get(
@@ -33,7 +44,10 @@ export const MovieState = ({children}) => {
 
         dispatch({
             type: SEARCH_FILMS,
-            payload: response.data.results
+            payload: {
+                films: response.data.results,
+                query: value,
+            }
         })
     }
 
@@ -50,11 +64,11 @@ export const MovieState = ({children}) => {
         })
     }
 
-    const {loading, films, film} = state
+    const {loading, films, film, search} = state
 
     return (
         <MovieContext.Provider value={{
-            setLoading, searchRequest, getFilm, loading, films, film
+            setLoading, searchRequest, getFilm, loading, films, film, search
         }}>
             {children}
         </MovieContext.Provider>
