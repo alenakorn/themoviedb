@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import {Menu} from 'semantic-ui-react'
+import {Icon, Menu} from 'semantic-ui-react'
 import {SearchWrap} from './Search'
 import { useLocation } from 'react-router-dom'
 
@@ -10,21 +10,18 @@ export const Navbar = () => {
     return (
         <nav className="">
             <Menu size='huge'>
-                <Menu.Item>The movie search</Menu.Item>
-                <Menu.Item>
-                    <NavLink exact to="/" className="nav-link">Home</NavLink>
-                </Menu.Item>
-                <Menu.Item>
-                    <NavLink to="/about" className="nav-link">About</NavLink>
-                </Menu.Item>
-
+                <Menu.Item><Icon name='tv'/> Movies</Menu.Item>
                 { isHomePage
                     ? (
                         <Menu.Item position='right'>
                             <SearchWrap/>
                         </Menu.Item>
                     )
-                    : null
+                    : (
+                        <Menu.Item position='right'>
+                            <NavLink exact to="/" className="nav-link"><Icon name='chevron left'/> Back to home page</NavLink>
+                        </Menu.Item>
+                    )
                 }
             </Menu>
         </nav>
