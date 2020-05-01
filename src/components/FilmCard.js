@@ -7,13 +7,13 @@ const IMAGE_POSTER_DEFAULT = 'https://react.semantic-ui.com/images/wireframe/whi
 
 export const FilmCard = ({film}) => {
     return (
-        <Link to={`/film/${film.id}`} className="ui card">
+        <Link to={`/film/${film.id}`} className="ui card movie">
             {film.poster_path
                 ? <Image src={IMAGE_POSTER_PREFIX + film.poster_path} wrapped
                          ui={false}/>
                 : <Image src={IMAGE_POSTER_DEFAULT} wrapped size='medium'
+                         className='no-image'
                          ui={false}/>
-
             }
             <Card.Content>
                 <Card.Header>{film.title}</Card.Header>

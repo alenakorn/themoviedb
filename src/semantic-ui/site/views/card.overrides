@@ -1,3 +1,24 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.card.movie {
+  transition: all .2s ease-in-out;
+  &:hover {
+    filter: invert(1) contrast(1.2);
+  }
+  &,
+  .image {
+    filter: invert(1);
+  }
+  .image.no-image {
+    min-height: 425px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2b2b2b;
+    img {
+      filter: invert(0.9) brightness(1.5);
+    }
+  }
+}
