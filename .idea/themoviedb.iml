@@ -5,5 +5,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="react-hooks" />
+    <orderEntry type="module" module-name="Semantic-UI-LESS" />
   </component>
 </module>
