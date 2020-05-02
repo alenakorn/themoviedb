@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash": "^4.17.15",
     "node-sass": "^4.14.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "react-throttle": "^0.3.0",
+    "semantic-ui-react": "^0.88.2",
+    "use-debounce": "^3.4.2"
   },
   "scripts": {
     "start": "craco start",
