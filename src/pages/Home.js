@@ -30,7 +30,7 @@ export const Home = () => {
                         />
                     )
                     : (
-                    <Card.Group itemsPerRow={6}>
+                    <Card.Group centered>
                         {
                             films.map(item => (
                                 <FilmCard film={item} key={item.id}/>
@@ -40,5 +40,5 @@ export const Home = () => {
                 )
             }
         </Container>
-    );
+    )
 }

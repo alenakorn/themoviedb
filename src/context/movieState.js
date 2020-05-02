@@ -4,7 +4,7 @@ import axios from 'axios'
 import {MovieContext} from './movieContext'
 import {movieReducer} from './movieReducer'
 
-import {DEFAULT_STATE, GET_FILM, SEARCH_FILMS, SET_LOADING} from './type'
+import {DEFAULT_STATE, GET_FILM, SEARCH_FILMS, SET_LOADING, SET_LOADING_FILM} from './type'
 
 const API_KEY = '8f377e1df6c2f4fce7385a40245c1557'
 const LANGUAGE = 'ru-RU'
@@ -19,11 +19,16 @@ export const MovieState = ({children}) => {
         film: {},
         search: '',
         loading: false,
+        loadingFilm: true
     }
 
     const [state, dispatch] = useReducer(movieReducer, initialState)
 
     const setLoading = () => dispatch({type: SET_LOADING})
+
+    const getLoadingFilm = () => {
+        setTimeout(() => dispatch({type: SET_LOADING_FILM}), 2500)
+    }
 
     const defaultState = () => {
         dispatch({
@@ -64,11 +69,11 @@ export const MovieState = ({children}) => {
         })
     }
 
-    const {loading, films, film, search} = state
+    const {loading, loadingFilm, films, film, search} = state
 
     return (
         <MovieContext.Provider value={{
-            setLoading, searchRequest, getFilm, loading, films, film, search
+            setLoading, searchRequest, getFilm, getLoadingFilm, loading, loadingFilm, films, film, search
         }}>
             {children}
         </MovieContext.Provider>

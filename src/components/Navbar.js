@@ -9,8 +9,12 @@ export const Navbar = () => {
     const isHomePage = location.pathname === '/'
     return (
         <nav className="">
-            <Menu size='huge' inverted>
-                <Menu.Item><Icon name='tv'/> Movies</Menu.Item>
+            <Menu size='huge' stackable inverted>
+                <Menu.Item>
+                    <NavLink exact to="/" className="nav-link">
+                        <Icon name='tv'/> Movies
+                    </NavLink>
+                </Menu.Item>
                 { isHomePage
                     ? (
                         <Menu.Item position='right'>
@@ -25,5 +29,5 @@ export const Navbar = () => {
                 }
             </Menu>
         </nav>
-    );
-};
+    )
+}

@@ -3,5 +3,5 @@
 *******************************/
 
 .ui.container {
-   padding: 4em;
+   padding: 4em 2em;
 }

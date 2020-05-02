@@ -11,7 +11,7 @@ export const SearchWrap = () => {
     }
 
     return (
-        <Debounce time="1000" handler="onChange">
+        <Debounce time="800" handler="onChange">
             <Input
                 className='icon dark'
                 icon='search'

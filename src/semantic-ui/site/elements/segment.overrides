@@ -6,3 +6,9 @@
   max-width: 50%;
   margin: auto;
 }
+
+.ui.placeholder-image {
+  margin: auto;
+  max-width: 300px;
+  height: 450px;
+}

@@ -3,16 +3,17 @@
 *******************************/
 
 .ui.card.movie {
-  transition: all .2s ease-in-out;
+  opacity:1;
+  transition: width 1s, height 1s, opacity 1s 1.5s;
   &:hover {
     filter: invert(1) contrast(1.2);
+    transition: all .2s ease-in-out;
   }
   &,
   .image {
     filter: invert(1);
   }
   .image.no-image {
-    min-height: 425px;
     display: flex;
     align-items: center;
     justify-content: center;

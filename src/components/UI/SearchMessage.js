@@ -12,7 +12,5 @@ export const SearchMessage = props => {
                 </Header.Subheader>
             </Header>
         </Segment>
-    );
-
+    )
 }
-

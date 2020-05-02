@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import {Navbar} from './components/Navbar'
 import {Home} from './pages/Home'
@@ -18,7 +18,7 @@ function App() {
                 </div>
             </BrowserRouter>
         </MovieState>
-    );
+    )
 }
 
-export default App;
+export default App
