@@ -1,5 +1,8 @@
 export const SET_LOADING = 'SET_LOADING'
 export const SET_LOADING_FILM = 'SET_LOADING_FILM'
+export const SET_LOADING_PAGE = 'SET_LOADING_PAGE'
+
 export const SEARCH_FILMS = 'SEARCH_FILMS'
 export const GET_FILM = 'GET_FILM'
 export const DEFAULT_STATE = 'DEFAULT_STATE'
+export const ON_PAGE_CHANGE = 'ON_PAGE_CHANGE'

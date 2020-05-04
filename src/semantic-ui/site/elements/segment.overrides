@@ -12,3 +12,7 @@
   max-width: 300px;
   height: 450px;
 }
+
+.ui.segment-title {
+  margin: 1em 2em 2em;
+}
