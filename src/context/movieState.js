@@ -4,27 +4,40 @@ import axios from 'axios'
 import {MovieContext} from './movieContext'
 import {movieReducer} from './movieReducer'
 
-import {DEFAULT_STATE, GET_FILM, SEARCH_FILMS, SET_LOADING, SET_LOADING_FILM} from './type'
+import {
+    DEFAULT_STATE,
+    GET_FILM,
+    ON_PAGE_CHANGE,
+    SEARCH_FILMS,
+    SET_LOADING,
+    SET_LOADING_FILM,
+    SET_LOADING_PAGE
+} from './type'
 
 const API_KEY = '8f377e1df6c2f4fce7385a40245c1557'
 const LANGUAGE = 'ru-RU'
 
-const withCreds = (url, query) => {
-    return `https://api.themoviedb.org/3/${url}?api_key=${API_KEY}&language=${LANGUAGE}${query ? `&query=${query}` : ''}}`
+const withCreds = (url, query, page) => {
+    return `https://api.themoviedb.org/3/${url}?api_key=${API_KEY}&language=${LANGUAGE}${query ? `&query=${query}` : ''}${page ? `&page=${page}` : ''}`
 }
 
 export const MovieState = ({children}) => {
     const initialState = {
         films: [],
         film: {},
+        totalResults: null,
+        totalPages: null,
+        activePage: 1,
         search: '',
         loading: false,
-        loadingFilm: true
+        loadingFilm: true,
+        loadingPage: false,
     }
 
     const [state, dispatch] = useReducer(movieReducer, initialState)
 
     const setLoading = () => dispatch({type: SET_LOADING})
+    const setLoadingPage = () => dispatch({type: SET_LOADING_PAGE})
 
     const getLoadingFilm = () => {
         setTimeout(() => dispatch({type: SET_LOADING_FILM}), 2500)
@@ -52,7 +65,25 @@ export const MovieState = ({children}) => {
             payload: {
                 films: response.data.results,
                 query: value,
+                totalResults: response.data.total_results,
+                totalPages: response.data.total_pages,
             }
+        })
+    }
+
+    const onPageChange = async page => {
+        setLoadingPage()
+
+        const response = await axios.get(
+            withCreds(`search/movie`, search, page)
+        )
+
+        dispatch({
+            type: ON_PAGE_CHANGE,
+            payload: {
+                films: response.data.results,
+                activePage: page
+            },
         })
     }
 
@@ -69,11 +100,12 @@ export const MovieState = ({children}) => {
         })
     }
 
-    const {loading, loadingFilm, films, film, search} = state
+    const {loading, loadingFilm, films, film, search, totalPages, totalResults, activePage, loadingPage} = state
 
     return (
         <MovieContext.Provider value={{
-            setLoading, searchRequest, getFilm, getLoadingFilm, loading, loadingFilm, films, film, search
+            setLoading, searchRequest, getFilm, getLoadingFilm, onPageChange,
+            loading, loadingFilm, films, film, search, totalPages, totalResults, activePage, loadingPage
         }}>
             {children}
         </MovieContext.Provider>
